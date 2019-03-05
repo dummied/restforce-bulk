@@ -1,6 +1,7 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'simplecov'
+require 'securerandom'
 SimpleCov.start do
   add_filter "/spec/"
 end
@@ -17,7 +18,7 @@ module RestforceMockHelpers
     @restforce_client ||= double(Restforce, {
       authenticate!: true,
       middleware: double('Middleware', use: true, insert_after: true, response: true),
-      options: { api_version: '29.0', oauth_token: SecureRandom.hex }
+      options: { api_version: '29.0', oauth_token: ::SecureRandom.hex }
     })
   end
 

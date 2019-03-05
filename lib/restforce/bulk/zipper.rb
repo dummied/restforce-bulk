@@ -1,3 +1,5 @@
+require 'securerandom'
+
 module Restforce
   module Bulk
     class Zipper
@@ -29,7 +31,7 @@ module Restforce
       end
 
       def output_filename
-        @output_filename ||= "/tmp/#{SecureRandom.hex}.zip"
+        @output_filename ||= "/tmp/#{::SecureRandom.hex}.zip"
       end
     end
   end
